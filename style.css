@@ -1,0 +1,793 @@
+:root {
+
+    /* Primary */
+
+    --moderate-cyan: hsl(176, 50%, 47%);
+    --dark-cyan: hsl(176, 72%, 28%);
+
+    /* Neutral */
+
+    --black: hsl(0, 0%, 0%);
+    --dark-gray: hsl(0, 0%, 48%);
+
+
+    /* Custom */
+
+    --cream: hsl(0, 0%, 98%);
+    --light-gray: hsl(0, 0%, 85%);
+    --faded-black: hsl(0, 0%, 65%);
+    --faded-cyan: hsl(176, 50%, 65%);
+
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Font weights: 400, 500, 700 */
+
+body {
+    display: grid;
+    grid-template-rows: 18rem 7rem auto;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+        "header"
+        "overlap"
+        "mastercraft";
+    font-family: "Commissioner", sans-serif;
+    font-weight: 400;
+    font-size: 1rem;
+    color: var(--dark-gray);
+    min-height: 100vh;
+}
+
+/* Utility classes */
+
+.flex {
+    display: flex;
+}
+
+.grid {
+    display: grid;
+}
+
+.space-between {
+    justify-content: space-between;
+}
+
+.column {
+    flex-direction: column;
+}
+
+.remove-default-ul {
+    list-style: none;
+}
+
+.remove-default-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.remove-a-styling {
+    text-decoration: none;
+}
+
+.bg-white {
+    background-color: white;
+}
+
+.remove-default-button {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    font: inherit;
+    font-size: inherit;
+    color: inherit;
+    cursor: pointer;
+}
+
+.remove-default-input {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    box-shadow: none;
+    appearance: none;
+    box-sizing: border-box;
+}
+
+.button {
+    font-weight: 700;
+    padding-inline: 1.8rem;
+    border-radius: 100vh;
+    /* padding-block: 1rem; */
+    height: 3.5rem;
+}
+
+.button--green {
+    background-color: var(--moderate-cyan);
+    color: white;
+}
+
+.button--bookmark {
+    position: relative;
+    padding-left: 4rem;
+    background-color: var(--cream);
+    color: var(--dark-gray);
+}
+
+.button--bookmark.bookmarked {
+    color: var(--dark-cyan);
+}
+
+.button--bookmark.bookmarked .mastercraft__bookmark-svg circle {
+    fill: var(--dark-cyan);
+}
+
+.button--bookmark.bookmarked .mastercraft__bookmark-svg path {
+    fill: white;
+}
+
+.button--out-of-stock {
+    background-color: var(--light-gray);
+}
+
+.content-inline-padding {
+    padding-inline: 3rem;
+}
+
+.border-radius-10 {
+    border-radius: 10px;
+}
+
+.gray-border-right {
+    border-right: 1px solid var(--light-gray);
+}
+
+.margin-left-2rem {
+    margin-left: 2rem;
+}
+
+.margin-top-2rem {
+    margin-top: 2rem;
+}
+
+.faded-text-grey {
+    color: var(--light-gray) !important;
+}
+
+.faded-text-black {
+    color: var(--faded-black) !important;
+}
+
+.faded-text-cyan {
+    color: var(--faded-cyan) !important;
+}
+
+.hidden {
+    display: none;
+}
+
+div.hidden {
+    display: none;
+}
+
+.align-center {
+    align-items: center;
+}
+
+.align-bottom {
+    align-items: flex-end;
+}
+
+.no-scroll {
+    overflow: hidden;
+}
+
+/* Radio buttons */
+
+.card__radio {
+    position: relative;
+    margin-right: 1rem;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: #fff;
+    width: 2rem;
+    min-width: 2rem;
+    height: 2rem;
+    min-height: 2rem;
+    border: 1px solid var(--light-gray);
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.card__radio:checked {
+    border-color: var(--faded-cyan);
+}
+
+.card__radio:checked::after {
+    content: "";
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: var(--faded-cyan);
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+label {
+    cursor: pointer;
+}
+
+/* Component classes */
+
+/* Header */
+
+.header {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0)), 
+        url("images/image-hero-desktop.jpg");
+    background-position: center;
+    background-size: cover;
+    grid-template-columns: minmax(2rem, auto) minmax(0, 90rem) minmax(2rem, auto);
+    grid-template-areas: ". menu .";
+    grid-row: header / overlap-end;
+    grid-column: 1 / -1;
+    /* -1: This is the ending grid line. The negative value -1 is a special notation in CSS Grid that refers to the last grid line in the grid. So, -1 represents the line after the last column. */
+}
+
+.header__menu-bar {
+    margin-top: 2.5rem;
+    grid-area: menu;
+}
+
+.header__nav-ul {
+    gap: 2rem;
+}
+
+.header__nav-ul a {
+    color: white;
+}
+
+/* Mastercraft section */
+
+.mastercraft {
+    background-color: var(--cream);
+    grid-row: mastercraft;
+    grid-column: 1 / -1;
+}
+
+.mastercraft__container {
+    position: relative;
+    width: 100%;
+    max-width: 54rem;
+    margin-inline: auto;
+    margin-bottom: 7rem;
+    grid-row: overlap / mastercraft-end;
+    grid-column: 1 / -1;
+    gap: 2rem;
+}
+
+.mastercraft__margin-container {
+    margin-inline: 2rem;
+    gap: 2rem;
+}
+
+.mastercraft__logo {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%) translateY(-50%);
+}
+
+.mastercraft__header-container {
+    padding-top: 4rem;
+    padding-bottom: 3rem;
+}
+
+.mastercraft__heading {
+    color: var(--black);
+    font-size: 2rem;
+    text-align: center;
+}
+
+.mastercraft__p {
+    text-align: center;
+    margin-top: 0.7rem;
+}
+
+.mastercraft__header-button-container {
+    margin-top: 2.25rem;
+}
+
+.mastercraft__bookmark-svg {
+    position: absolute;
+    top: 0;
+    left: -4px;
+    height: 100%;
+    width: auto;
+}
+
+.mastercraft__bookmark-svg circle {
+    fill: var(--black);
+}
+
+.mastercraft__bookmark-svg path {
+    fill: var(--light-gray);
+}
+
+/* Backed container */
+
+.mastercraft__backed-container {
+    padding-block: 3rem;
+    gap: 3rem;
+}
+
+.backed-container__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+}
+
+.large-number {
+    font-size: 2rem;
+    color: var(--black);
+    font-weight: 700;
+}
+
+.small-number {
+    margin-top: 0.4rem;
+}
+
+.backed-container__progress-bar {
+    border-radius: 20px;
+    flex-grow: 1;
+    background-color: var(--cream);
+    height: 0.75rem;
+}
+
+.backed-container__progress {
+    border-radius: 20px;
+    width: 0;
+    background-color: var(--moderate-cyan);
+    height: 0.75rem;
+}
+
+/* About container */
+
+.mastercraft__about-container {
+    padding: 3rem;
+}
+
+.about__heading {
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.about__p {
+    margin-top: 2rem;
+    line-height: 1.75;
+}
+
+/* Card */
+
+.card {
+    border: 1px solid var(--light-gray);
+    padding: 2rem;
+    border-radius: 10px;
+    gap: 2rem;
+}
+
+.card__header {
+    font-size: 1.2rem;
+    color: var(--black);
+    font-weight: 700;
+}
+
+.card__pledge {
+    color: var(--moderate-cyan);
+}
+
+.card__p {
+    line-height: 1.5;
+}
+
+.card__reward-container {
+    align-items: center;
+}
+
+.number-left-container {
+    align-items: center;
+}
+
+.number-left {
+    font-size: 1.9rem;
+    color: var(--black);
+    font-weight: 700;
+}
+
+.left {
+    margin-left: 0.4rem;
+}
+
+.card--modal {
+    padding-inline: 0rem;
+}
+
+.card__modal-content-wrapper {
+    padding-inline: 2rem;
+}
+
+.modal__enter-pledge-wrapper {
+    border-top: 1px solid var(--light-gray);
+    padding: 2rem;
+    padding-bottom: 0rem;
+}
+
+.card.active {
+    border: 2px solid var(--faded-cyan);
+}
+
+/* Overlay / Modal */
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 200;
+}
+
+.overlay-content {
+    position: relative;
+    padding: 2rem;
+    background-color: white;
+    border-radius: 5px;
+    max-width: 50rem;
+    margin-inline: 1.5rem;
+    align-self: center;
+    margin-top: 2rem;
+    overflow-y: auto;
+}
+
+.close-modal-button {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+}
+
+.overlay-content__heading {
+    font-size: 1.5rem;
+    color: var(--black);
+}
+
+.overlay-content__p {
+    margin-top: 1rem;
+}
+
+.number-modal {
+    font-size: 1.2rem;
+}
+
+.pledge-modal {
+    font-size: 1rem;
+    margin-left: 0.75rem;
+    margin-bottom: 0.05rem;
+}
+
+.card__content--modal {
+    gap: 1rem;
+}
+
+/* Pledge input */
+
+.modal__pledge-amount-wrapper {
+    gap: 1rem;
+}
+
+.pledge-amount-container {
+    border: 1px solid var(--light-gray);
+    border-radius: 100vh;
+}
+
+.dollar-sign {
+    margin-left: 1rem;
+}
+
+.pledge-input {
+    margin-left: 0.75rem;
+    margin-right: 1rem;
+    width: 100%;
+    max-width: 4rem;
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+/* card grid */
+
+.card-grid {
+    display: grid;
+    grid-template-columns: 2rem min-content 1fr min-content 2rem;
+    grid-template-rows: auto auto auto;
+    grid-template-areas:
+        ". radio title number-left ."
+        ". radio paragraph paragraph ."
+        "pledge-container pledge-container pledge-container pledge-container pledge-container";
+    gap: 0;
+}
+
+.card-grid__radio {
+    grid-area: radio;
+}
+
+.card-grid__title {
+    grid-area: title;
+}
+
+.card-grid__number-left {
+    grid-area: number-left;
+}
+
+.card-grid__paragraph {
+    grid-area: paragraph;
+    padding-top: 1.25rem;
+}
+
+.card-grid__pledge-container {
+    grid-area: pledge-container;
+    margin-top: 2rem;
+}
+
+/* Thanks for support */
+
+.overlay__thanks {
+    padding: 2rem;
+    margin-top: 2rem;
+    margin-inline: 1rem;
+    border-radius: 5px;
+    background-color: white;
+    gap: 1.5rem;
+    max-width: 35rem;
+    align-self: center;
+}
+
+.thanks__icon-check {
+    height: 5rem;
+    width: 5rem;
+}
+
+.thanks__heading {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--black);
+    margin-top: 1rem;
+}
+
+.thanks__p {
+    line-height: 1.75;
+    text-align: center;
+}
+
+@media (hover:hover) {
+    .button--green:hover {
+        background-color: var(--dark-cyan);
+    }
+
+    .button--bookmark:hover .mastercraft__bookmark-svg circle {
+        fill: var(--dark-gray);
+    }
+
+    .button--bookmark.bookmarked:hover .mastercraft__bookmark-svg circle {
+        fill: var(--moderate-cyan);
+    }
+
+    label:hover > * {
+        color: var(--faded-cyan);
+    }
+
+    .close-modal-button:hover svg path {
+        opacity: 1;
+    }
+}
+
+@media (hover:none) {
+    .button--green:active {
+        background-color: var(--dark-cyan);
+    }
+
+    .close-modal-button:active svg path {
+        opacity: 1;
+    }
+}
+
+@media only screen and (max-width: 767px) {
+
+    .header__nav-ul {
+        display: none;
+    }
+
+    .header__hamburger {
+        position: relative;
+        display: block;
+        z-index: 100;
+    }
+
+    /* Bookmark button section */
+
+    .mastercraft__header-button-container {
+        gap: 2rem;
+    }
+
+    .button[data-radio="no-reward-radio"] {
+        width: 100%;
+    }
+
+    .button--bookmark {
+        padding-inline: 0;
+        padding-left: 0;
+        background-color: transparent;
+    }
+
+    .button--bookmark svg {
+        display: block;
+        position: relative;
+        height: 100%;
+        left: 0;
+    }
+
+    .bookmark-text {
+        display: none;
+    }
+
+    /* Statistics container */
+
+    .backed-container__grid {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+    }
+
+    .backed-container__numbers-container {
+        margin-left: 0;
+        border-right: none;
+    }
+
+    .backed-container__numbers-container > * {
+        text-align: center;
+    }
+
+    /* main content container */
+
+    .mastercraft__margin-container {
+        margin-inline: 1.5rem;
+    }
+
+    /* Card details */
+
+    .content-inline-padding {
+        padding-inline: 1.5rem;
+    }
+
+    .card__header-container {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .card__reward-container {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: start;
+    }
+
+    .card__radio-label-container {
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: flex-start;
+    }
+
+    .card__pledge {
+        margin-left: 0;
+    }
+
+    /* Mobile menu */
+
+    .no-scroll-mobile-menu {
+        overflow: hidden;
+    }
+
+    .mobile-menu__overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .mobile-menu__modal {
+        position: fixed;
+        margin-inline: 2rem;
+        top: 5rem;
+        left: 0;
+        right: 0;
+        background-color: white;
+        border-radius: 10px;
+    }
+
+    .mobile-menu__nav-ul > li {
+        padding-block: 1.5rem;
+        padding-inline: 1.5rem;
+    }
+
+    .mobile-menu__nav-ul > li:not(:last-child) {
+        border-bottom: 1px solid var(--light-gray);
+    }
+
+    .mobile-menu__nav-ul > li > a {
+        color: var(--black);
+        font-size: 1.25rem;
+        font-weight: 500;
+    }
+
+    /* Card grid */
+
+    .overlay-content {
+        margin-inline: 1rem;
+        padding-inline: 1.5rem;
+    }
+
+    .card-grid {
+        display: grid;
+        grid-template-columns: 1rem min-content 1fr min-content 1rem;
+        grid-template-rows: auto auto auto;
+        grid-template-areas:
+            ". radio title title ."
+            ". paragraph paragraph paragraph ."
+            ". number-left number-left number-left ."
+            "pledge-container pledge-container pledge-container pledge-container pledge-container";
+        gap: 0;
+    }
+
+    .card-grid__number-left {
+        margin-top: 1.5rem;
+    }
+
+    .card-grid__paragraph {
+        padding-top: 1.5rem;
+    }
+
+    .card-grid__radio {
+        align-self: center;
+    }
+
+    .modal__enter-pledge-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+        padding-inline: 1rem;
+    }
+
+    .button--green {
+        padding-inline: 1.5rem;
+    }
+} 
+
